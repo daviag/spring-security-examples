@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:daviag
+    username: sa
+    password: ""
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+    jpa:
+      generate-ddl: true
+      hibernate:
+        ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+
+jwt:
+  secret: YXNkZm9pdWVxb2lhc29kZmFzZGZha2xlanFlbGt3cmpscmV3
+  expirationTime: 5
+  refresh:
+    expirationTime: 10
