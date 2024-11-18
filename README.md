@@ -9,6 +9,7 @@ This repository contains some basic examples of Spring Security usage.
 - [Subprojects](#subprojects)
   - [basic-auth](#basic-auth)
   - [jwt-auth](#jwt-auth)
+  - [api-key-secret-auth](#api-key-secret-auth)
 - [Contributing](#contributing)
 - [Additional Resources](#additional-resources)
 
@@ -29,10 +30,12 @@ The project is structured as follows:
 ```bash  
 .
 ├── basic-auth
-└── jwt-auth
+├── jwt-auth
+└── api-key-secret-auth
 ```
 - [basic-auth](#basic-auth) - Example of how to use basic authentication using Spring Security
 - [jwt-auth](#jwt-auth) - Example of how to use JWT authentication using Spring Security
+- [api-key-secret-auth](#api-key-secret-auth) - Example of how to use API key authentication using Spring Security
 
 ## Getting Started
 
@@ -147,6 +150,37 @@ curl -X POST http://localhost:8080/api/v1/auth/refresh \
 
 #### TODOs
 - [ ] Email the user upon registration to verify their account
+
+### api-key-secret-auth
+Example of how to use API key authentication using Spring Security. 
+This project uses an API key and secret stored in memory.
+
+#### Endpoints
+
+| Method | Path                        | Description                                           |
+| --- |-----------------------------|-------------------------------------------------------|        
+| GET | /api/v1/greeting/public     | Public endpoint. No authentication is needed          |
+| GET | /api/v1/greeting/restricted | Restricted endpoint. API key authentication is required |
+
+#### Usage
+
+To access the public endpoint:
+
+```bash 
+curl http://localhost:8080/api/v1/greeting/public
+```
+
+To access the restricted endpoint:
+
+```bash 
+curl http://localhost:8080/api/v1/greeting/restricted \
+  -H "X-API-KEY: <your_api_key>" \
+  -H "X-API-SECRET: <your_api_secret>"
+``` 
+
+#### TODOs
+- [ ] Store Api key and secret in a database
+
 
 ## Contributing
 

@@ -1,4 +1,5 @@
 rootProject.name = 'spring-security-examples'
 include 'basic-auth'
 include 'jwt-auth'
+include 'api-key-secret-auth'
 
